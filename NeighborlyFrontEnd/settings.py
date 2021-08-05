@@ -1,6 +1,12 @@
 #--------- Flask settings
-SERVER_HOST = '0.0.0.0' # Update this for the appropriate front-end website when up
-SERVER_PORT = 5000
+from os import environ
+
+HOST = environ.get('SERVER_HOST', 'localhost')
+try:
+    PORT = int(environ.get('SERVER_PORT', '8000'))
+except ValueError:
+    PORT = 8000
+
 FLASK_DEBUG = True # Do not use debug mode in prod
 
 # Flask-Restplus settings
